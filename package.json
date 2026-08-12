@@ -1,0 +1,15 @@
+{
+  "name": "sm-labels-website",
+  "version": "1.0.0",
+  "private": true,
+  "description": "SM Labels Static Website & Vercel API Backend for Enquiry Submissions",
+  "scripts": {
+    "dev": "vercel dev",
+    "start": "python -m http.server 8080"
+  },
+  "dependencies": {
+    "nodemailer": "^6.9.10",
+    "resend": "^3.2.0",
+    "@sendgrid/mail": "^8.1.1"
+  }
+}

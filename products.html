@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Products & Catalog | SM Labels</title>
+  <meta name="description" content="Explore SM Labels full range of clothing labels, woven labels, satin labels, PU labels, leather patches, cardboard tags, hang tags, art card tags, paper tags, and UV tags."/>
+  
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin=""/>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@300..700,0..1&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="css/styles.css"/>
+
+  <script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "surface-light": "#fbf9f4",
+            "accent-gold": "#c5a059",
+            "brand-dark": "#111111",
+          },
+          fontFamily: {
+            serif: ["Playfair Display", "serif"],
+            sans: ["Manrope", "sans-serif"],
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-surface-light text-brand-dark">
+
+  <!-- ==================== FLOATING WHATSAPP BUTTON (+91-9315458189) ==================== -->
+  <a href="https://wa.me/919315458189?text=Hi%20SM%20Labels,%20I%20would%20like%20to%20get%20in%20touch%20regarding%20clothing%20labels%20and%20tags." target="_blank" class="whatsapp-float shadow-2xl">
+    <svg class="w-5 h-5 mr-2 fill-current" viewBox="0 0 24 24">
+      <path d="M12.012 2c-5.506 0-9.989 4.478-9.99 9.984 0 1.763.459 3.486 1.332 5.004L2 22l5.12-1.338c1.46.797 3.109 1.218 4.887 1.219h.005c5.505 0 9.989-4.478 9.99-9.985.001-2.668-1.034-5.176-2.916-7.059A9.914 9.914 0 0 0 12.012 2zm5.726 14.167c-.244.686-1.42 1.31-1.956 1.393-.537.082-1.229.119-3.957-.991-3.491-1.42-5.748-4.964-5.922-5.197-.174-.233-1.419-1.888-1.419-3.599 0-1.711.897-2.553 1.216-2.903.319-.35.698-.437.93-.437.233 0 .465.002.668.012.215.01.503-.082.786.597.291.698.988 2.416 1.075 2.59.087.175.145.379.029.611-.116.233-.174.379-.349.583-.175.204-.368.455-.525.611-.175.175-.357.366-.153.715.204.35 0.907 1.496 1.948 2.423 1.339 1.192 2.467 1.562 2.816 1.737.349.174.553.145.756-.087.203-.233.873-1.018 1.106-1.367.233-.349.465-.291.785-.175.32.116 2.037.961 2.386 1.135.349.174.582.262.669.408.087.146.087.844-.157 1.53z"/>
+    </svg>
+    <span>Chat on WhatsApp</span>
+  </a>
+
+  <!-- HEADER -->
+  <header class="fixed top-0 left-0 right-0 z-50 glass-nav">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+      <a href="index.html" class="flex items-center space-x-3">
+        <div class="w-10 h-10 bg-brand-dark text-white rounded-lg flex items-center justify-center font-serif font-bold text-xl">SM</div>
+        <div class="flex flex-col">
+          <span class="font-serif text-lg font-bold">SM LABELS</span>
+          <span class="text-[10px] tracking-[0.25em] text-gray-500 uppercase -mt-1">Products</span>
+        </div>
+      </a>
+      <nav class="hidden md:flex items-center space-x-8 text-sm font-medium">
+        <a href="index.html" class="hover:text-accent-gold">Home</a>
+        <a href="products.html" class="text-accent-gold font-bold">Products & Catalog</a>
+        <a href="index.html#inquiry" class="hover:text-accent-gold">Inquire Now</a>
+      </nav>
+      <!-- Single Brochure Action Button -->
+      <div class="hidden md:flex items-center space-x-3">
+        <a href="SM_Labels_Brochure_2026.html" target="_blank" class="px-4 py-2 text-xs font-semibold tracking-wider uppercase border border-gray-300 hover:border-black rounded-md flex items-center">
+          <span class="material-symbols-outlined text-sm mr-1">file_download</span> Download Brochure
+        </a>
+        <button class="whatsapp-trigger px-4 py-2 text-xs font-semibold uppercase btn-whatsapp rounded-md flex items-center" data-product="Garment Labels Catalog">
+          <span class="material-symbols-outlined text-sm mr-1">chat</span> Get in Touch
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="pt-28 pb-24 max-w-7xl mx-auto px-6">
+    
+    <!-- Title Header -->
+    <div class="text-center mb-12">
+      <span class="text-xs font-semibold tracking-widest text-accent-gold uppercase">Full Range Catalog</span>
+      <h1 class="font-serif text-4xl sm:text-6xl font-light mt-2 mb-4">Clothing Labels & Tags</h1>
+      <p class="text-gray-600 max-w-2xl mx-auto text-sm sm:text-base font-light">
+        Explore our complete suite of custom clothing labels and high-end branding tags designed to elevate every garment.
+      </p>
+    </div>
+
+    <!-- Filter Buttons -->
+    <div class="flex flex-wrap items-center justify-center gap-2 mb-14">
+      <button data-filter="all" class="filter-btn px-4 py-2 rounded-full text-xs font-semibold uppercase bg-black text-white border border-black">All Products</button>
+      <button data-filter="clothing-labels" class="filter-btn px-4 py-2 rounded-full text-xs font-semibold uppercase bg-white text-gray-700 border border-gray-200 hover:bg-gray-100">All Clothing Labels</button>
+      <button data-filter="tags" class="filter-btn px-4 py-2 rounded-full text-xs font-semibold uppercase bg-white text-gray-700 border border-gray-200 hover:bg-gray-100">All Tags</button>
+    </div>
+
+    <!-- SECTION 1: CLOTHING LABELS -->
+    <div class="mb-16">
+      <div class="flex items-center space-x-3 mb-8 border-b border-gray-200 pb-4">
+        <span class="w-3 h-3 rounded-full bg-accent-gold"></span>
+        <h2 class="font-serif text-2xl sm:text-3xl font-bold uppercase tracking-wide">Clothing Labels</h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        
+        <!-- 1. Clothing Labels -->
+        <div class="product-card glass-card rounded-2xl overflow-hidden flex flex-col justify-between" data-category="clothing-labels" data-type="clothing-labels">
+          <div>
+            <div class="img-zoom-container h-72">
+              <img src="Label_sewn_on_silk_shirt_202608081854.jpeg" alt="Clothing Labels" class="w-full h-full object-cover"/>
+            </div>
+            <div class="p-6">
+              <span class="text-[10px] tracking-widest text-amber-700 uppercase font-semibold">Clothing Labels</span>
+              <h3 class="font-serif text-2xl font-medium mt-1 mb-2">Clothing Labels</h3>
+              <p class="text-xs text-gray-600 leading-relaxed">Give every garment a distinct identity with labels designed around your brand.</p>
+            </div>
+          </div>
+          <div class="p-6 pt-0 flex flex-col space-y-2">
+            <a href="index.html#inquiry" class="w-full py-2 bg-black text-white text-xs uppercase font-semibold rounded-lg hover:bg-amber-600 transition-colors text-center">Inquire Now</a>
+            <button class="whatsapp-trigger w-full py-1.5 border border-emerald-600 text-emerald-700 hover:bg-emerald-50 text-[11px] uppercase font-semibold rounded-lg flex items-center justify-center" data-product="Clothing Labels">
+              <span class="material-symbols-outlined text-xs mr-1">chat</span> Chat on WhatsApp
+            </button>
+          </div>
+        </div>
+
+        <!-- 2. Woven Labels -->
+        <div class="product-card glass-card rounded-2xl overflow-hidden flex flex-col justify-between" data-category="clothing-labels" data-type="woven-labels">
+          <div>
+            <div class="img-zoom-container h-72">
+              <img src="Woven_clothing_label_on_sweater_202608081853.jpeg" alt="Woven Labels" class="w-full h-full object-cover"/>
+            </div>
+            <div class="p-6">
+              <span class="text-[10px] tracking-widest text-amber-700 uppercase font-semibold">Woven Labels</span>
+              <h3 class="font-serif text-2xl font-medium mt-1 mb-2">Woven Labels</h3>
+              <p class="text-xs text-gray-600 leading-relaxed">Woven into the details of your brand.</p>
+            </div>
+          </div>
+          <div class="p-6 pt-0 flex flex-col space-y-2">
+            <a href="index.html#inquiry" class="w-full py-2 bg-black text-white text-xs uppercase font-semibold rounded-lg hover:bg-amber-600 transition-colors text-center">Inquire Now</a>
+            <button class="whatsapp-trigger w-full py-1.5 border border-emerald-600 text-emerald-700 hover:bg-emerald-50 text-[11px] uppercase font-semibold rounded-lg flex items-center justify-center" data-product="Woven Labels">
+              <span class="material-symbols-outlined text-xs mr-1">chat</span> Chat on WhatsApp
+            </button>
+          </div>
+        </div>
+
+        <!-- 3. Satin Labels -->
+        <div class="product-card glass-card rounded-2xl overflow-hidden flex flex-col justify-between" data-category="clothing-labels" data-type="satin-labels">
+          <div>
+            <div class="img-zoom-container h-72">
+              <img src="Satin_label_on_cashmere_coat_202608090105.jpeg" alt="Satin Labels" class="w-full h-full object-cover"/>
+            </div>
+            <div class="p-6">
+              <span class="text-[10px] tracking-widest text-amber-700 uppercase font-semibold">Satin Labels</span>
+              <h3 class="font-serif text-2xl font-medium mt-1 mb-2">Satin Labels</h3>
+              <p class="text-xs text-gray-600 leading-relaxed">Smooth, refined and designed for a premium garment finish.</p>
+            </div>
+          </div>
+          <div class="p-6 pt-0 flex flex-col space-y-2">
+            <a href="index.html#inquiry" class="w-full py-2 bg-black text-white text-xs uppercase font-semibold rounded-lg hover:bg-amber-600 transition-colors text-center">Inquire Now</a>
+            <button class="whatsapp-trigger w-full py-1.5 border border-emerald-600 text-emerald-700 hover:bg-emerald-50 text-[11px] uppercase font-semibold rounded-lg flex items-center justify-center" data-product="Satin Labels">
+              <span class="material-symbols-outlined text-xs mr-1">chat</span> Chat on WhatsApp
+            </button>
+          </div>
+        </div>
+
+        <!-- 4. PU Labels -->
+        <div class="product-card glass-card rounded-2xl overflow-hidden flex flex-col justify-between" data-category="clothing-labels" data-type="pu-labels">
+          <div>
+            <div class="img-zoom-container h-72">
+              <img src="Leather_patch_on_beige_trousers_202608090105.jpeg" alt="PU Labels" class="w-full h-full object-cover"/>
+            </div>
+            <div class="p-6">
+              <span class="text-[10px] tracking-widest text-amber-700 uppercase font-semibold">PU Labels</span>
+              <h3 class="font-serif text-2xl font-medium mt-1 mb-2">PU Labels</h3>
+              <p class="text-xs text-gray-600 leading-relaxed">A distinctive material-driven identity for modern apparel.</p>
+            </div>
+          </div>
+          <div class="p-6 pt-0 flex flex-col space-y-2">
+            <a href="index.html#inquiry" class="w-full py-2 bg-black text-white text-xs uppercase font-semibold rounded-lg hover:bg-amber-600 transition-colors text-center">Inquire Now</a>
+            <button class="whatsapp-trigger w-full py-1.5 border border-emerald-600 text-emerald-700 hover:bg-emerald-50 text-[11px] uppercase font-semibold rounded-lg flex items-center justify-center" data-product="PU Labels">
+              <span class="material-symbols-outlined text-xs mr-1">chat</span> Chat on WhatsApp
+            </button>
+          </div>
+        </div>
+
+        <!-- 5. Leather Patches -->
+        <div class="product-card glass-card rounded-2xl overflow-hidden flex flex-col justify-between" data-category="clothing-labels" data-type="leather-patches">
+          <div>
+            <div class="img-zoom-container h-72">
+              <img src="Leather_patch_on_canvas_jacket_202608081858.jpeg" alt="Leather Patches" class="w-full h-full object-cover"/>
+            </div>
+            <div class="p-6">
+              <span class="text-[10px] tracking-widest text-amber-700 uppercase font-semibold">Leather Patches</span>
+              <h3 class="font-serif text-2xl font-medium mt-1 mb-2">Leather Patches</h3>
+              <p class="text-xs text-gray-600 leading-relaxed">Add a tactile, premium brand signature to your garments.</p>
+            </div>
+          </div>
+          <div class="p-6 pt-0 flex flex-col space-y-2">
+            <a href="index.html#inquiry" class="w-full py-2 bg-black text-white text-xs uppercase font-semibold rounded-lg hover:bg-amber-600 transition-colors text-center">Inquire Now</a>
+            <button class="whatsapp-trigger w-full py-1.5 border border-emerald-600 text-emerald-700 hover:bg-emerald-50 text-[11px] uppercase font-semibold rounded-lg flex items-center justify-center" data-product="Leather Patches">
+              <span class="material-symbols-outlined text-xs mr-1">chat</span> Chat on WhatsApp
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- SECTION 2: TAGS -->
+    <div class="mb-12">
+      <div class="flex items-center space-x-3 mb-8 border-b border-gray-200 pb-4">
+        <span class="w-3 h-3 rounded-full bg-amber-600"></span>
+        <h2 class="font-serif text-2xl sm:text-3xl font-bold uppercase tracking-wide">Tags</h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        
+        <!-- 6. Cardboard Tags -->
+        <div class="product-card glass-card rounded-2xl overflow-hidden flex flex-col justify-between" data-category="tags" data-type="cardboard-tags">
+          <div>
+            <div class="img-zoom-container h-72">
+              <img src="Cardboard_hang_tags_on_background_202608081902.jpeg" alt="Cardboard Tags" class="w-full h-full object-cover"/>
+            </div>
+            <div class="p-6">
+              <span class="text-[10px] tracking-widest text-amber-700 uppercase font-semibold">Cardboard Tags</span>
+              <h3 class="font-serif text-2xl font-medium mt-1 mb-2">Cardboard Tags</h3>
+              <p class="text-xs text-gray-600 leading-relaxed">Strong, versatile tags designed for clear brand presentation.</p>
+            </div>
+          </div>
+          <div class="p-6 pt-0 flex flex-col space-y-2">
+            <a href="index.html#inquiry" class="w-full py-2 bg-black text-white text-xs uppercase font-semibold rounded-lg hover:bg-amber-600 transition-colors text-center">Inquire Now</a>
+            <button class="whatsapp-trigger w-full py-1.5 border border-emerald-600 text-emerald-700 hover:bg-emerald-50 text-[11px] uppercase font-semibold rounded-lg flex items-center justify-center" data-product="Cardboard Tags">
+              <span class="material-symbols-outlined text-xs mr-1">chat</span> Chat on WhatsApp
+            </button>
+          </div>
+        </div>
+
+        <!-- 7. Hang Tags -->
+        <div class="product-card glass-card rounded-2xl overflow-hidden flex flex-col justify-between" data-category="tags" data-type="hang-tags">
+          <div>
+            <div class="img-zoom-container h-72">
+              <img src="Hang_tags_on_marble_surface_202608090104.jpeg" alt="Hang Tags" class="w-full h-full object-cover"/>
+            </div>
+            <div class="p-6">
+              <span class="text-[10px] tracking-widest text-amber-700 uppercase font-semibold">Hang Tags</span>
+              <h3 class="font-serif text-2xl font-medium mt-1 mb-2">Hang Tags</h3>
+              <p class="text-xs text-gray-600 leading-relaxed">The first physical touchpoint between your brand and your customer.</p>
+            </div>
+          </div>
+          <div class="p-6 pt-0 flex flex-col space-y-2">
+            <a href="index.html#inquiry" class="w-full py-2 bg-black text-white text-xs uppercase font-semibold rounded-lg hover:bg-amber-600 transition-colors text-center">Inquire Now</a>
+            <button class="whatsapp-trigger w-full py-1.5 border border-emerald-600 text-emerald-700 hover:bg-emerald-50 text-[11px] uppercase font-semibold rounded-lg flex items-center justify-center" data-product="Hang Tags">
+              <span class="material-symbols-outlined text-xs mr-1">chat</span> Chat on WhatsApp
+            </button>
+          </div>
+        </div>
+
+        <!-- 8. Art Card Tags -->
+        <div class="product-card glass-card rounded-2xl overflow-hidden flex flex-col justify-between" data-category="tags" data-type="art-card-tags">
+          <div>
+            <div class="img-zoom-container h-72">
+              <img src="Paper_hang_tag_with_lettering_202608081901.jpeg" alt="Art Card Tags" class="w-full h-full object-cover"/>
+            </div>
+            <div class="p-6">
+              <span class="text-[10px] tracking-widest text-amber-700 uppercase font-semibold">Art Card Tags</span>
+              <h3 class="font-serif text-2xl font-medium mt-1 mb-2">Art Card Tags</h3>
+              <p class="text-xs text-gray-600 leading-relaxed">Turn your brand artwork into a memorable physical detail.</p>
+            </div>
+          </div>
+          <div class="p-6 pt-0 flex flex-col space-y-2">
+            <a href="index.html#inquiry" class="w-full py-2 bg-black text-white text-xs uppercase font-semibold rounded-lg hover:bg-amber-600 transition-colors text-center">Inquire Now</a>
+            <button class="whatsapp-trigger w-full py-1.5 border border-emerald-600 text-emerald-700 hover:bg-emerald-50 text-[11px] uppercase font-semibold rounded-lg flex items-center justify-center" data-product="Art Card Tags">
+              <span class="material-symbols-outlined text-xs mr-1">chat</span> Chat on WhatsApp
+            </button>
+          </div>
+        </div>
+
+        <!-- 9. Paper Tags -->
+        <div class="product-card glass-card rounded-2xl overflow-hidden flex flex-col justify-between" data-category="tags" data-type="paper-tags">
+          <div>
+            <div class="img-zoom-container h-72">
+              <img src="Paper_clothing_tags_on_wood_202608081901.jpeg" alt="Paper Tags" class="w-full h-full object-cover"/>
+            </div>
+            <div class="p-6">
+              <span class="text-[10px] tracking-widest text-amber-700 uppercase font-semibold">Paper Tags</span>
+              <h3 class="font-serif text-2xl font-medium mt-1 mb-2">Paper Tags</h3>
+              <p class="text-xs text-gray-600 leading-relaxed">Clean, versatile and adaptable to different brand identities.</p>
+            </div>
+          </div>
+          <div class="p-6 pt-0 flex flex-col space-y-2">
+            <a href="index.html#inquiry" class="w-full py-2 bg-black text-white text-xs uppercase font-semibold rounded-lg hover:bg-amber-600 transition-colors text-center">Inquire Now</a>
+            <button class="whatsapp-trigger w-full py-1.5 border border-emerald-600 text-emerald-700 hover:bg-emerald-50 text-[11px] uppercase font-semibold rounded-lg flex items-center justify-center" data-product="Paper Tags">
+              <span class="material-symbols-outlined text-xs mr-1">chat</span> Chat on WhatsApp
+            </button>
+          </div>
+        </div>
+
+        <!-- 10. UV Tags -->
+        <div class="product-card glass-card rounded-2xl overflow-hidden flex flex-col justify-between" data-category="tags" data-type="uv-tags">
+          <div>
+            <div class="img-zoom-container h-72">
+              <img src="Hang_tags_on_marble_surface_202608081901.jpeg" alt="UV Tags" class="w-full h-full object-cover"/>
+            </div>
+            <div class="p-6">
+              <span class="text-[10px] tracking-widest text-amber-700 uppercase font-semibold">UV Tags</span>
+              <h3 class="font-serif text-2xl font-medium mt-1 mb-2">UV Tags</h3>
+              <p class="text-xs text-gray-600 leading-relaxed">Distinctive visual finishes designed to make your tags stand out.</p>
+            </div>
+          </div>
+          <div class="p-6 pt-0 flex flex-col space-y-2">
+            <a href="index.html#inquiry" class="w-full py-2 bg-black text-white text-xs uppercase font-semibold rounded-lg hover:bg-amber-600 transition-colors text-center">Inquire Now</a>
+            <button class="whatsapp-trigger w-full py-1.5 border border-emerald-600 text-emerald-700 hover:bg-emerald-50 text-[11px] uppercase font-semibold rounded-lg flex items-center justify-center" data-product="UV Tags">
+              <span class="material-symbols-outlined text-xs mr-1">chat</span> Chat on WhatsApp
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- ==================== DETAILED UNIFIED FOOTER ==================== -->
+  <footer class="bg-brand-dark text-white pt-16 pb-12 border-t border-white/10">
+    <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
+      
+      <!-- Column 1: Brand & Slogan -->
+      <div class="space-y-4">
+        <div class="flex items-center space-x-2 font-serif text-xl font-bold">
+          <div class="w-8 h-8 bg-amber-400 text-black rounded flex items-center justify-center font-bold text-sm">SM</div>
+          <span>SM LABELS</span>
+        </div>
+        <p class="text-xs text-gray-400 leading-relaxed">
+          Give every garment a distinct identity with labels designed around your brand. Crafted with precision for fashion houses & apparel manufacturers.
+        </p>
+        <div class="pt-2">
+          <a href="SM_Labels_Brochure_2026.html" target="_blank" class="inline-flex items-center px-4 py-2 bg-white/10 hover:bg-white/20 text-white text-xs font-semibold rounded-lg transition-colors border border-white/15">
+            <span class="material-symbols-outlined text-sm mr-1.5">download</span> Download Brochure 2026
+          </a>
+        </div>
+      </div>
+
+      <!-- Column 2: Clothing Labels -->
+      <div>
+        <h5 class="text-xs font-bold uppercase tracking-widest text-amber-400 mb-4">Clothing Labels</h5>
+        <ul class="space-y-2 text-xs text-gray-300">
+          <li><a href="products.html" class="hover:text-white">Clothing Labels</a></li>
+          <li><a href="products.html" class="hover:text-white">Woven Labels</a></li>
+          <li><a href="products.html" class="hover:text-white">Satin Labels</a></li>
+          <li><a href="products.html" class="hover:text-white">PU Labels</a></li>
+          <li><a href="products.html" class="hover:text-white">Leather Patches</a></li>
+        </ul>
+      </div>
+
+      <!-- Column 3: Tags Collection -->
+      <div>
+        <h5 class="text-xs font-bold uppercase tracking-widest text-amber-400 mb-4">Tags Collection</h5>
+        <ul class="space-y-2 text-xs text-gray-300">
+          <li><a href="products.html" class="hover:text-white">Cardboard Tags</a></li>
+          <li><a href="products.html" class="hover:text-white">Hang Tags</a></li>
+          <li><a href="products.html" class="hover:text-white">Art Card Tags</a></li>
+          <li><a href="products.html" class="hover:text-white">Paper Tags</a></li>
+          <li><a href="products.html" class="hover:text-white">UV Tags</a></li>
+        </ul>
+      </div>
+
+      <!-- Column 4: Contact & Geo Location -->
+      <div class="space-y-3">
+        <h5 class="text-xs font-bold uppercase tracking-widest text-amber-400 mb-4">Contact & Geo Location</h5>
+        
+        <p class="text-xs text-gray-300 leading-relaxed flex items-start">
+          <span class="material-symbols-outlined text-amber-400 text-base mr-2 mt-0.5">location_on</span>
+          <span>
+            <strong>Address:</strong><br/>
+            A- 128 Parsvnath paradise, Mohan nagar, Ghaziabad, UP, India
+          </span>
+        </p>
+
+        <a href="https://maps.google.com/?q=A-+128+Parsvnath+paradise,+Mohan+nagar,+Ghaziabad,+UP,+India" target="_blank" class="inline-flex items-center text-xs text-amber-300 hover:underline">
+          <span class="material-symbols-outlined text-sm mr-1">map</span> View Location on Google Maps
+        </a>
+
+        <p class="text-xs text-gray-300 flex items-center pt-2">
+          <span class="material-symbols-outlined text-amber-400 text-base mr-2">mail</span>
+          <a href="mailto:enterprisessm.delhi@gmail.com" class="hover:underline text-gray-200">enterprisessm.delhi@gmail.com</a>
+        </p>
+
+        <p class="text-xs text-gray-300 flex items-center">
+          <span class="material-symbols-outlined text-emerald-400 text-base mr-2">phone_in_talk</span>
+          <a href="https://wa.me/919315458189" target="_blank" class="hover:underline text-gray-200">+91-9315458189 (WhatsApp)</a>
+        </p>
+      </div>
+
+    </div>
+
+    <!-- Bottom Bar -->
+    <div class="max-w-7xl mx-auto px-6 pt-8 mt-8 border-t border-white/10 flex flex-col sm:flex-row justify-between text-xs text-gray-500">
+      <span>© 2026 SM Labels Inc. All rights reserved.</span>
+      <div class="space-x-4 mt-2 sm:mt-0">
+        <a href="products.html" class="hover:text-gray-300">Products</a>
+        <a href="index.html#inquiry" class="hover:text-gray-300">Inquiry Form</a>
+        <a href="SM_Labels_Brochure_2026.html" target="_blank" class="hover:text-gray-300">Brochure</a>
+        <a href="https://maps.google.com/?q=A-+128+Parsvnath+paradise,+Mohan+nagar,+Ghaziabad,+UP,+India" target="_blank" class="hover:text-gray-300">Google Maps</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      background: #000;
+    }
+  </style>
+</head>
+<body>
+<!-- STITCH_THREEJS_START:ANIMATION_23 class="fixed inset-0 w-full h-full bg-transparent" -->
+<div class="fixed inset-0 w-full h-full bg-transparent" style="display:block;">
+<script src="https://ajax.googleapis.com/ajax/libs/threejs/r125/three.min.js"></script>
+<div id="threejs-container-ANIMATION_23" style="width:100%;height:100%"></div>
+<script>
+(function() {
+  const container = document.getElementById('threejs-container-ANIMATION_23');
+  const devicePixelRatio = window.devicePixelRatio || 1;
+  
+const width = container.clientWidth || window.innerWidth;
+const height = container.clientHeight || window.innerHeight;
+
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(75, width / height, 0.1, 1000);
+const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+renderer.setSize(width, height);
+renderer.setPixelRatio(window.devicePixelRatio);
+renderer.shadowMap.enabled = true;
+container.appendChild(renderer.domElement);
+
+// Lighting
+const ambientLight = new THREE.AmbientLight(0xffffff, 0.8);
+scene.add(ambientLight);
+
+const directionalLight = new THREE.DirectionalLight(0xffffff, 1.2);
+directionalLight.position.set(5, 10, 7);
+directionalLight.castShadow = true;
+scene.add(directionalLight);
+
+// Cashmere Fabric Surface (Represented as a smooth, gently undulating plane)
+const fabricGeometry = new THREE.PlaneGeometry(20, 20, 64, 64);
+const fabricMaterial = new THREE.MeshPhongMaterial({ 
+    color: 0xf5f3ee, // Warm Ivory
+    side: THREE.DoubleSide,
+    shininess: 5,
+    bumpScale: 0.02
+});
+const fabric = new THREE.Mesh(fabricGeometry, fabricMaterial);
+fabric.rotation.x = -Math.PI / 2;
+fabric.receiveShadow = true;
+scene.add(fabric);
+
+// S.M. Labels Satin Label
+const labelGroup = new THREE.Group();
+const labelBaseGeo = new THREE.BoxGeometry(1.2, 0.02, 0.6);
+const labelBaseMat = new THREE.MeshPhongMaterial({ color: 0xffffff });
+const labelBase = new THREE.Mesh(labelBaseGeo, labelBaseMat);
+labelBase.castShadow = true;
+labelGroup.add(labelBase);
+
+// Simulated Gold Text (Simplified Gold Bars for luxury feel)
+const goldMat = new THREE.MeshStandardMaterial({ 
+    color: 0xd4af37, 
+    metalness: 0.8, 
+    roughness: 0.2 
+});
+const line1 = new THREE.Mesh(new THREE.BoxGeometry(0.8, 0.01, 0.05), goldMat);
+line1.position.set(0, 0.02, 0.1);
+labelGroup.add(line1);
+
+const line2 = new THREE.Mesh(new THREE.BoxGeometry(0.5, 0.01, 0.03), goldMat);
+line2.position.set(0, 0.02, -0.1);
+labelGroup.add(line2);
+
+labelGroup.position.y = 0.1;
+scene.add(labelGroup);
+
+camera.position.set(2, 1.5, 2);
+camera.lookAt(0, 0, 0);
+
+// Animation Loop
+let time = 0;
+function animate() {
+    requestAnimationFrame(animate);
+    time += 0.005;
+
+    // Gentle camera sweep
+    camera.position.x = 2 + Math.sin(time * 0.5) * 0.5;
+    camera.position.z = 2 + Math.cos(time * 0.5) * 0.5;
+    camera.lookAt(0, 0, 0);
+
+    // Subtle fabric undulation
+    const positions = fabric.geometry.attributes.position.array;
+    for (let i = 0; i < positions.length; i += 3) {
+        const x = positions[i];
+        const y = positions[i + 1];
+        positions[i + 2] = Math.sin(x * 0.5 + time) * 0.1 + Math.cos(y * 0.5 + time) * 0.1;
+    }
+    fabric.geometry.attributes.position.needsUpdate = true;
+
+    // Gentle label float
+    labelGroup.position.y = 0.1 + Math.sin(time * 1.5) * 0.05;
+    labelGroup.rotation.y = Math.sin(time * 0.5) * 0.1;
+
+    renderer.render(scene, camera);
+}
+
+window.addEventListener('resize', () => {
+    const w = container.clientWidth || window.innerWidth;
+    const h = container.clientHeight || window.innerHeight;
+    camera.aspect = w / h;
+    camera.updateProjectionMatrix();
+    renderer.setSize(w, h);
+});
+
+animate();
+
+})();
+</script>
+</div>
+<!-- STITCH_THREEJS_END:ANIMATION_23 -->
+</body>
+</html>

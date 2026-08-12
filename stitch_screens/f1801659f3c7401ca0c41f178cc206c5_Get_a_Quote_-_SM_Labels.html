@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+
+<html class="scroll-smooth" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>SM Labels - Get a Quote</title>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600&amp;family=Playfair+Display:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Configuration -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-tertiary-fixed-variant": "#474747",
+                        "tertiary-container": "#1b1c1c",
+                        "tertiary-fixed-dim": "#c8c6c6",
+                        "on-tertiary": "#ffffff",
+                        "surface-bright": "#fbf9f4",
+                        "outline": "#747878",
+                        "surface-container": "#f0eee9",
+                        "secondary-fixed-dim": "#e0c29a",
+                        "on-secondary": "#ffffff",
+                        "on-secondary-fixed-variant": "#584325",
+                        "on-primary-fixed": "#1c1b1b",
+                        "surface-container-lowest": "#ffffff",
+                        "secondary-container": "#feddb4",
+                        "tertiary-fixed": "#e4e2e2",
+                        "secondary-fixed": "#feddb4",
+                        "inverse-surface": "#30312e",
+                        "on-primary-container": "#858383",
+                        "outline-variant": "#c4c7c7",
+                        "on-tertiary-container": "#848483",
+                        "primary": "#000000",
+                        "primary-fixed": "#e5e2e1",
+                        "error-container": "#ffdad6",
+                        "surface-variant": "#e4e2dd",
+                        "on-surface": "#1b1c19",
+                        "surface-container-low": "#f5f3ee",
+                        "on-secondary-fixed": "#281801",
+                        "on-error-container": "#93000a",
+                        "secondary": "#725a3a",
+                        "inverse-on-surface": "#f2f1ec",
+                        "primary-container": "#1c1b1b",
+                        "surface-dim": "#dbdad5",
+                        "tertiary": "#000000",
+                        "on-error": "#ffffff",
+                        "surface-container-highest": "#e4e2dd",
+                        "on-primary": "#ffffff",
+                        "on-background": "#1b1c19",
+                        "on-secondary-container": "#786040",
+                        "surface-tint": "#5f5e5e",
+                        "primary-fixed-dim": "#c8c6c5",
+                        "on-surface-variant": "#444748",
+                        "error": "#ba1a1a",
+                        "surface": "#fbf9f4",
+                        "background": "#fbf9f4",
+                        "inverse-primary": "#c8c6c5",
+                        "on-tertiary-fixed": "#1b1c1c",
+                        "on-primary-fixed-variant": "#474646",
+                        "surface-container-high": "#eae8e3"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "stack-sm": "32px",
+                        "unit": "8px",
+                        "stack-lg": "120px",
+                        "gutter": "32px",
+                        "margin-mobile": "20px",
+                        "container-max": "1440px",
+                        "margin-desktop": "64px",
+                        "stack-md": "64px"
+                    },
+                    "fontFamily": {
+                        "body-lg": ["Manrope"],
+                        "label-caps": ["Manrope"],
+                        "headline-sm": ["Playfair Display"],
+                        "body-md": ["Manrope"],
+                        "headline-md": ["Playfair Display"],
+                        "display-lg-mobile": ["Playfair Display"],
+                        "label-sm": ["Manrope"],
+                        "display-lg": ["Playfair Display"]
+                    },
+                    "fontSize": {
+                        "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "label-caps": ["12px", { "lineHeight": "1.2", "letterSpacing": "0.1em", "fontWeight": "600" }],
+                        "headline-sm": ["24px", { "lineHeight": "1.3", "fontWeight": "400" }],
+                        "body-md": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "headline-md": ["32px", { "lineHeight": "1.2", "fontWeight": "400" }],
+                        "display-lg-mobile": ["40px", { "lineHeight": "1.1", "fontWeight": "400" }],
+                        "label-sm": ["11px", { "lineHeight": "1.2", "fontWeight": "500" }],
+                        "display-lg": ["64px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "400" }]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .fade-in { animation: fadeIn 0.5s ease-in forwards; }
+        .fade-out { animation: fadeOut 0.3s ease-out forwards; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes fadeOut { from { opacity: 1; transform: translateY(0); } to { opacity: 0; transform: translateY(-10px); } }
+        
+        /* Custom Input Styling based on Style Guidance */
+        .minimal-input {
+            width: 100%;
+            background-color: transparent;
+            border: none;
+            border-bottom: 1px solid rgba(68, 71, 72, 0.15); /* outline color low opacity */
+            padding-bottom: 8px;
+            font-family: 'Manrope', sans-serif;
+            font-size: 16px;
+            color: #1b1c19;
+            transition: border-color 0.3s ease;
+            box-shadow: none !important;
+        }
+        .minimal-input:focus {
+            outline: none;
+            border-bottom-color: #000000;
+        }
+        .minimal-label {
+            display: block;
+            margin-bottom: 8px;
+        }
+        .chip-label input[type="radio"], .chip-label input[type="checkbox"] {
+            display: none;
+        }
+        .chip-label span {
+            display: inline-block;
+            border: 1px solid rgba(68, 71, 72, 0.15);
+            padding: 8px 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .chip-label input:checked + span {
+            background-color: #000000;
+            color: #ffffff;
+            border-color: #000000;
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body-md antialiased selection:bg-secondary-container selection:text-on-secondary-container">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 bg-surface/80 dark:bg-surface-container-highest/80 backdrop-blur-md border-b border-outline/10 dark:border-outline-variant/10">
+<div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop flex justify-between items-center h-20">
+<!-- Brand Logo -->
+<a class="font-headline-sm text-headline-sm tracking-tighter text-primary dark:text-on-primary-fixed" href="#">SM LABELS</a>
+<!-- Navigation Links (Desktop) -->
+<div class="hidden md:flex space-x-8">
+<!-- Neither is active since this is a distinct flow -->
+<a class="text-on-surface-variant dark:text-outline-variant hover:text-primary dark:hover:text-on-primary-fixed transition-colors duration-300 font-label-caps text-label-caps" href="#">Products</a>
+<a class="text-on-surface-variant dark:text-outline-variant hover:text-primary dark:hover:text-on-primary-fixed transition-colors duration-300 font-label-caps text-label-caps" href="#">About</a>
+</div>
+<!-- Trailing Action -->
+<div class="flex items-center gap-4">
+<a class="font-label-caps text-label-caps bg-primary text-on-primary px-6 py-3 hover:bg-secondary transition-colors duration-300" href="#">GET A QUOTE</a>
+</div>
+</div>
+</nav>
+<!-- Main Content Canvas -->
+<main class="pt-32 pb-stack-lg min-h-screen flex flex-col">
+<div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop w-full flex-grow flex flex-col md:flex-row gap-gutter">
+<!-- Left Column: Editorial Imagery & Hero -->
+<div class="w-full md:w-5/12 flex flex-col justify-between mb-stack-sm md:mb-0">
+<div>
+<h1 class="font-display-lg-mobile md:font-display-lg text-primary mb-6">Let's Create Something Distinctive.</h1>
+<p class="font-body-lg text-on-surface-variant max-w-md mb-12">Precision manufacturing tailored to your brand's unique identity. Provide us with your details, and our artisans will begin crafting your proposal.</p>
+</div>
+<!-- Editorial Image Placeholder -->
+<div class="hidden md:block w-full h-[614px] bg-surface-container-low relative overflow-hidden group">
+<img class="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105 opacity-90 mix-blend-multiply grayscale" data-alt="A macro, high-contrast, black and white photograph of woven fabric textures. The lighting highlights the meticulous details of threads interlacing, evoking a sense of premium craftsmanship, industrial precision, and quiet luxury manufacturing." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDVIVEh_n9vW0GJ3nzN3LM8wciGnHt7DBviJZBoINjyIvO98hfCEQ1qkrFp1aEDCEyKiiBS3d5_c1MH2z-fgBoR6l5iBOtJyVzkqspR0rIPVSkp1TbDg2LDhqXhMb35Y_DM1_zg3setxdVotNzkoIG2m3u7nt0BuQoTrTe1RCfjf-XjSvQj8cKu8swP4b6d0Fpm5uQCq6m16oYLvoeAxNACji6tGVuDg107yg4hRFigXJH10txoUsZr"/>
+</div>
+</div>
+<!-- Right Column: Form Container -->
+<div class="w-full md:w-7/12 md:pl-12 lg:pl-24">
+<!-- Step Indicator -->
+<div class="mb-12 flex items-center justify-between border-b border-outline/10 pb-4" id="step-indicator">
+<span class="font-label-caps text-label-caps text-primary">Step <span id="current-step-text">01</span> / 04</span>
+<span class="font-label-caps text-label-caps text-on-surface-variant" id="step-title-text">Product Selection</span>
+</div>
+<!-- FORM -->
+<form class="relative min-h-[400px]" id="quote-form">
+<!-- STEP 1: Product Selection -->
+<div class="form-step fade-in" id="step-1">
+<h2 class="font-headline-md text-primary mb-8">What are you looking to create?</h2>
+<div class="flex flex-wrap gap-3">
+<label class="chip-label font-label-caps text-label-caps">
+<input name="product_type" type="radio" value="Clothing Labels"/>
+<span>Clothing Labels</span>
+</label>
+<label class="chip-label font-label-caps text-label-caps">
+<input name="product_type" type="radio" value="Woven Labels"/>
+<span>Woven Labels</span>
+</label>
+<label class="chip-label font-label-caps text-label-caps">
+<input name="product_type" type="radio" value="Satin Labels"/>
+<span>Satin Labels</span>
+</label>
+<label class="chip-label font-label-caps text-label-caps">
+<input name="product_type" type="radio" value="PU Labels"/>
+<span>PU Labels</span>
+</label>
+<label class="chip-label font-label-caps text-label-caps">
+<input name="product_type" type="radio" value="Leather Patches"/>
+<span>Leather Patches</span>
+</label>
+<label class="chip-label font-label-caps text-label-caps">
+<input name="product_type" type="radio" value="Cardboard Tags"/>
+<span>Cardboard Tags</span>
+</label>
+<label class="chip-label font-label-caps text-label-caps">
+<input name="product_type" type="radio" value="Hang Tags"/>
+<span>Hang Tags</span>
+</label>
+<label class="chip-label font-label-caps text-label-caps">
+<input name="product_type" type="radio" value="Art Card Tags"/>
+<span>Art Card Tags</span>
+</label>
+<label class="chip-label font-label-caps text-label-caps">
+<input name="product_type" type="radio" value="Paper Tags"/>
+<span>Paper Tags</span>
+</label>
+<label class="chip-label font-label-caps text-label-caps">
+<input name="product_type" type="radio" value="UV Tags"/>
+<span>UV Tags</span>
+</label>
+<label class="chip-label font-label-caps text-label-caps">
+<input name="product_type" type="radio" value="Not Sure"/>
+<span>Not Sure</span>
+</label>
+</div>
+</div>
+<!-- STEP 2: Requirements -->
+<div class="form-step hidden" id="step-2">
+<h2 class="font-headline-md text-primary mb-8">Technical Specifications</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-12">
+<div>
+<label class="minimal-label font-label-caps text-label-caps text-on-surface-variant">Estimated Quantity</label>
+<input class="minimal-input" placeholder="e.g. 5,000 pcs" type="text"/>
+</div>
+<div>
+<label class="minimal-label font-label-caps text-label-caps text-on-surface-variant">Dimensions (W x H)</label>
+<input class="minimal-input" placeholder="e.g. 2 x 4 inches" type="text"/>
+</div>
+<div class="md:col-span-2">
+<label class="minimal-label font-label-caps text-label-caps text-on-surface-variant">Intended Application</label>
+<input class="minimal-input" placeholder="e.g. Sewn into neckline, heat pressed" type="text"/>
+</div>
+<div class="md:col-span-2">
+<label class="minimal-label font-label-caps text-label-caps text-on-surface-variant">Additional Requirements / Finish</label>
+<input class="minimal-input" placeholder="e.g. Matte finish, gold foil, organic cotton" type="text"/>
+</div>
+</div>
+</div>
+<!-- STEP 3: Upload Artwork -->
+<div class="form-step hidden" id="step-3">
+<h2 class="font-headline-md text-primary mb-8">Artwork &amp; References</h2>
+<p class="font-body-md text-on-surface-variant mb-6">Upload your design files or inspirational references. Supported formats: .ai, .pdf, .eps, .png, .jpg.</p>
+<div class="w-full border border-outline/15 p-12 flex flex-col items-center justify-center text-center cursor-pointer hover:bg-surface-container-low transition-colors group">
+<span class="material-symbols-outlined text-4xl text-on-surface-variant mb-4 group-hover:text-primary transition-colors">upload_file</span>
+<span class="font-label-caps text-label-caps text-primary mb-2">DRAG &amp; DROP FILES HERE</span>
+<span class="font-body-sm text-on-surface-variant text-sm">or click to browse</span>
+<input class="hidden" type="file"/>
+</div>
+</div>
+<!-- STEP 4: Contact Details -->
+<div class="form-step hidden" id="step-4">
+<h2 class="font-headline-md text-primary mb-8">Your Information</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-12">
+<div>
+<label class="minimal-label font-label-caps text-label-caps text-on-surface-variant">Full Name *</label>
+<input class="minimal-input" required="" type="text"/>
+</div>
+<div>
+<label class="minimal-label font-label-caps text-label-caps text-on-surface-variant">Company Name *</label>
+<input class="minimal-input" required="" type="text"/>
+</div>
+<div>
+<label class="minimal-label font-label-caps text-label-caps text-on-surface-variant">Email Address *</label>
+<input class="minimal-input" required="" type="email"/>
+</div>
+<div>
+<label class="minimal-label font-label-caps text-label-caps text-on-surface-variant">Phone Number</label>
+<input class="minimal-input" type="tel"/>
+</div>
+<div class="md:col-span-2">
+<label class="minimal-label font-label-caps text-label-caps text-on-surface-variant">Country</label>
+<input class="minimal-input" type="text"/>
+</div>
+</div>
+</div>
+<!-- Navigation Buttons -->
+<div class="mt-12 pt-8 flex justify-between border-t border-outline/10" id="form-actions">
+<button class="hidden font-label-caps text-label-caps text-primary border border-outline/15 px-8 py-4 hover:bg-surface-container-low transition-colors" id="btn-back" type="button">BACK</button>
+<div class="ml-auto">
+<button class="font-label-caps text-label-caps bg-primary text-on-primary px-8 py-4 hover:bg-secondary transition-colors" id="btn-next" type="button">CONTINUE</button>
+<button class="hidden font-label-caps text-label-caps bg-primary text-on-primary px-8 py-4 hover:bg-secondary transition-colors" id="btn-submit" type="submit">REQUEST MY QUOTE</button>
+</div>
+</div>
+</form>
+<!-- SUCCESS STATE -->
+<div class="hidden min-h-[400px] flex flex-col justify-center" id="success-state">
+<span class="material-symbols-outlined text-6xl text-primary mb-6 font-light">done_all</span>
+<h2 class="font-display-lg-mobile md:font-headline-md text-primary mb-4">Request Received.</h2>
+<p class="font-body-lg text-on-surface-variant mb-8 max-w-md">Thank you for your interest in SM Labels. Our team is reviewing your specifications and will return a detailed proposal within 24-48 hours.</p>
+<div>
+<a class="font-label-caps text-label-caps text-primary border-b border-primary pb-1 hover:text-secondary hover:border-secondary transition-colors" href="#">RETURN TO HOME</a>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="w-full py-stack-lg bg-surface-container-low dark:bg-tertiary-container border-t border-outline/10 dark:border-outline-variant/10">
+<div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop grid grid-cols-1 md:grid-cols-12 gap-gutter">
+<div class="md:col-span-4 flex flex-col justify-between">
+<div class="font-headline-md text-headline-md text-primary dark:text-on-primary-fixed mb-8">SM LABELS</div>
+<div class="font-body-md text-body-md text-on-surface dark:text-tertiary-fixed">
+                    © 2024 SM LABELS. PRECISION MANUFACTURING FOR GLOBAL FASHION HOUSES.
+                </div>
+</div>
+<div class="md:col-span-8 flex flex-wrap gap-8 md:justify-end mt-8 md:mt-0">
+<a class="font-body-md text-body-md text-on-surface-variant dark:text-on-tertiary-container hover:text-primary dark:hover:text-primary-fixed hover:underline decoration-1 underline-offset-4 transition-colors" href="#">Sustainability</a>
+<a class="font-body-md text-body-md text-on-surface-variant dark:text-on-tertiary-container hover:text-primary dark:hover:text-primary-fixed hover:underline decoration-1 underline-offset-4 transition-colors" href="#">Terms of Service</a>
+<a class="font-body-md text-body-md text-on-surface-variant dark:text-on-tertiary-container hover:text-primary dark:hover:text-primary-fixed hover:underline decoration-1 underline-offset-4 transition-colors" href="#">Privacy Policy</a>
+<a class="font-body-md text-body-md text-on-surface-variant dark:text-on-tertiary-container hover:text-primary dark:hover:text-primary-fixed hover:underline decoration-1 underline-offset-4 transition-colors" href="#">Contact</a>
+</div>
+</div>
+</footer>
+<!-- Form Interaction Logic -->
+<script>
+        document.addEventListener('DOMContentLoaded', () => {
+            let currentStep = 1;
+            const totalSteps = 4;
+            
+            const stepTitles = [
+                "Product Selection",
+                "Technical Specifications",
+                "Artwork & References",
+                "Your Information"
+            ];
+
+            const form = document.getElementById('quote-form');
+            const btnNext = document.getElementById('btn-next');
+            const btnBack = document.getElementById('btn-back');
+            const btnSubmit = document.getElementById('btn-submit');
+            const stepText = document.getElementById('current-step-text');
+            const titleText = document.getElementById('step-title-text');
+            const stepIndicator = document.getElementById('step-indicator');
+            const formActions = document.getElementById('form-actions');
+            const successState = document.getElementById('success-state');
+
+            function updateUI() {
+                // Hide all steps
+                document.querySelectorAll('.form-step').forEach((el, index) => {
+                    if (index + 1 === currentStep) {
+                        el.classList.remove('hidden', 'fade-out');
+                        el.classList.add('fade-in');
+                    } else {
+                        el.classList.add('hidden');
+                        el.classList.remove('fade-in', 'fade-out');
+                    }
+                });
+
+                // Update text
+                stepText.textContent = `0${currentStep}`;
+                titleText.textContent = stepTitles[currentStep - 1];
+
+                // Button logic
+                if (currentStep === 1) {
+                    btnBack.classList.add('hidden');
+                } else {
+                    btnBack.classList.remove('hidden');
+                }
+
+                if (currentStep === totalSteps) {
+                    btnNext.classList.add('hidden');
+                    btnSubmit.classList.remove('hidden');
+                } else {
+                    btnNext.classList.remove('hidden');
+                    btnSubmit.classList.add('hidden');
+                }
+            }
+
+            btnNext.addEventListener('click', () => {
+                if (currentStep < totalSteps) {
+                    const currentEl = document.getElementById(`step-${currentStep}`);
+                    currentEl.classList.replace('fade-in', 'fade-out');
+                    
+                    setTimeout(() => {
+                        currentStep++;
+                        updateUI();
+                    }, 250);
+                }
+            });
+
+            btnBack.addEventListener('click', () => {
+                if (currentStep > 1) {
+                    const currentEl = document.getElementById(`step-${currentStep}`);
+                    currentEl.classList.replace('fade-in', 'fade-out');
+                    
+                    setTimeout(() => {
+                        currentStep--;
+                        updateUI();
+                    }, 250);
+                }
+            });
+
+            form.addEventListener('submit', (e) => {
+                e.preventDefault();
+                
+                // Hide form area elements smoothly
+                form.classList.add('fade-out');
+                stepIndicator.classList.add('fade-out');
+                
+                setTimeout(() => {
+                    form.classList.add('hidden');
+                    stepIndicator.classList.add('hidden');
+                    
+                    // Show success state
+                    successState.classList.remove('hidden');
+                    successState.classList.add('fade-in');
+                    
+                    // Smooth scroll to top to view success message
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                }, 300);
+            });
+        });
+    </script>
+</body></html>
