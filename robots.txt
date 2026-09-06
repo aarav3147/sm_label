@@ -1,0 +1,7 @@
+# SM Labels Robots Configuration
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /stitch_screens/
+
+Sitemap: https://smlabels.in/sitemap.xml

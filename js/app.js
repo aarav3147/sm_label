@@ -4,33 +4,41 @@ const WHATSAPP_NUMBER = "919315458189";
 const COMPANY_EMAIL = "enterprisessm.delhi@gmail.com";
 
 // API Endpoint for Vercel Serverless Function
-// Can be customized via window.SM_LABELS_API_URL if hosted cross-domain
 const API_ENDPOINT = window.SM_LABELS_API_URL || '/api/submit-enquiry';
 
 document.addEventListener('DOMContentLoaded', () => {
   initShaderBackground();
   initProductFilters();
   initNavigation();
-  initInquiryForm();
+  initContactForms();
   initWhatsAppButtons();
+  initPhoneInputs();
 });
 
 /* ==========================================================================
-   1. NAVIGATION & MOBILE MENU
+   1. NAVIGATION & MOBILE DRAWER
    ========================================================================== */
 function initNavigation() {
   const mobileMenuBtn = document.getElementById('mobile-menu-btn');
   const mobileMenu = document.getElementById('mobile-menu');
 
   if (mobileMenuBtn && mobileMenu) {
-    mobileMenuBtn.addEventListener('click', () => {
+    mobileMenuBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
       mobileMenu.classList.toggle('hidden');
+    });
+
+    // Close mobile menu when clicking outside
+    document.addEventListener('click', (e) => {
+      if (!mobileMenu.contains(e.target) && !mobileMenuBtn.contains(e.target)) {
+        mobileMenu.classList.add('hidden');
+      }
     });
   }
 }
 
 /* ==========================================================================
-   2. PRODUCT FILTER SYSTEM
+   2. PRODUCT FILTER SYSTEM (Products Page)
    ========================================================================== */
 function initProductFilters() {
   const filterBtns = document.querySelectorAll('.filter-btn');
@@ -71,7 +79,7 @@ function initProductFilters() {
 }
 
 /* ==========================================================================
-   3. SECONDARY WHATSAPP CONTACT (+91-9315458189)
+   3. WHATSAPP ACTION BUTTONS (+91-9315458189)
    ========================================================================== */
 function initWhatsAppButtons() {
   const whatsappBtns = document.querySelectorAll('.whatsapp-trigger');
@@ -79,8 +87,8 @@ function initWhatsAppButtons() {
   whatsappBtns.forEach(btn => {
     btn.addEventListener('click', (e) => {
       e.preventDefault();
-      const product = btn.getAttribute('data-product') || 'SM Labels Clothing Labels & Tags';
-      const message = `Hi SM Labels, I am interested in getting a quote for ${product}. Please assist me with sample options and custom pricing.`;
+      const product = btn.getAttribute('data-product') || 'SM Labels Garment Labels & Trims';
+      const message = `Hi SM Labels, I would like to inquire about ${product}. Please share your catalog options, pricing, and sample details.`;
       const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
       window.open(url, '_blank');
     });
@@ -88,152 +96,215 @@ function initWhatsAppButtons() {
 }
 
 /* ==========================================================================
-   4. INQUIRY FORM SUBMISSION -> VERCEL API ENDPOINT (/api/submit-enquiry)
+   4. STRICT PHONE INPUT SANITIZATION & RESTRICTION
+   - Numbers only
+   - Auto-removes non-digits on keypress and paste
+   - Maximum 10 digits
    ========================================================================== */
-function initInquiryForm() {
-  const inquiryForm = document.getElementById('inquiry-form');
-  const formContainer = document.getElementById('inquiry-form-container');
-  const errorContainer = document.getElementById('inquiry-error-msg');
+function initPhoneInputs() {
+  const phoneInputs = document.querySelectorAll('input[type="tel"], .phone-input');
 
-  if (!inquiryForm) return;
+  phoneInputs.forEach(input => {
+    // Sanitize on input event
+    input.addEventListener('input', (e) => {
+      const raw = e.target.value;
+      // Strip everything except numbers 0-9
+      const cleaned = raw.replace(/[^0-9]/g, '');
+      // Limit to 10 digits
+      const truncated = cleaned.slice(0, 10);
+      if (raw !== truncated) {
+        e.target.value = truncated;
+      }
+    });
 
-  inquiryForm.addEventListener('submit', async (e) => {
-    e.preventDefault();
+    // Handle paste event specifically
+    input.addEventListener('paste', (e) => {
+      e.preventDefault();
+      const pasted = (e.clipboardData || window.clipboardData).getData('text');
+      const cleaned = pasted.replace(/[^0-9]/g, '').slice(0, 10);
+      input.value = cleaned;
+      input.dispatchEvent(new Event('input', { bubbles: true }));
+    });
+  });
+}
 
-    // Hide any previous error message
-    if (errorContainer) {
-      errorContainer.classList.add('hidden');
-      errorContainer.innerHTML = '';
-    }
+/* ==========================================================================
+   5. CONTACT FORM & SUBMISSION SYSTEM
+   ========================================================================== */
+function initContactForms() {
+  const forms = document.querySelectorAll('.sm-contact-form, #inquiry-form');
 
-    const submitBtn = inquiryForm.querySelector('button[type="submit"]');
-    const originalBtnHtml = submitBtn ? submitBtn.innerHTML : 'Submit Quote Request';
+  forms.forEach(form => {
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
 
-    // 1. Gather Form Data
-    const name = document.getElementById('inq-name')?.value?.trim() || '';
-    const company = document.getElementById('inq-company')?.value?.trim() || '';
-    const phone = document.getElementById('inq-phone')?.value?.trim() || '';
-    const email = document.getElementById('inq-email')?.value?.trim() || '';
-    const product = document.getElementById('inq-product')?.value || 'General Requirement';
-    const quantity = document.getElementById('inq-quantity')?.value?.trim() || '';
-    const message = document.getElementById('inq-notes')?.value?.trim() || '';
-    const website = document.getElementById('inq-website')?.value || ''; // Honeypot field
+      const container = form.closest('.sm-form-container') || document.getElementById('inquiry-form-container');
+      const errorBox = form.querySelector('.sm-form-error') || document.getElementById('inquiry-error-msg');
+      const submitBtn = form.querySelector('button[type="submit"]');
+      const originalBtnHtml = submitBtn ? submitBtn.innerHTML : 'Submit Requirement';
 
-    // 2. Client-side Anti-Spam & Validation
-    if (website && website.length > 0) {
-      // Bot trapped in honeypot
-      showToast('Enquiry received.');
-      inquiryForm.reset();
-      return;
-    }
-
-    if (!name || name.length < 2) {
-      displayFormError('Please enter your Name (at least 2 characters).');
-      return;
-    }
-
-    if (!phone || phone.length < 6) {
-      displayFormError('Please enter a valid Phone or WhatsApp Number.');
-      return;
-    }
-
-    // 3. Disable submit button & show loading spinner
-    if (submitBtn) {
-      submitBtn.disabled = true;
-      submitBtn.classList.add('opacity-75', 'cursor-not-allowed');
-      submitBtn.innerHTML = `
-        <span class="inline-block animate-spin mr-2">⏳</span> Processing Request...
-      `;
-    }
-
-    const payload = {
-      name: name,
-      company: company,
-      phone: phone,
-      email: email,
-      product: product,
-      quantity: quantity,
-      message: message,
-      website: website
-    };
-
-    try {
-      // 4. POST JSON request to Vercel Serverless Endpoint
-      const response = await fetch(API_ENDPOINT, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json'
-        },
-        body: JSON.stringify(payload)
-      });
-
-      const result = await response.json().catch(() => ({}));
-
-      if (response.ok && result.success) {
-        // Reset form ONLY on successful submission
-        inquiryForm.reset();
-
-        // Render Success Thank You UI
-        if (formContainer) {
-          formContainer.innerHTML = `
-            <div class="text-center py-10 px-6 space-y-4 animate-fadeIn">
-              <div class="w-16 h-16 bg-emerald-100 text-emerald-600 rounded-full mx-auto flex items-center justify-center mb-2 shadow-inner">
-                <span class="material-symbols-outlined text-3xl">task_alt</span>
-              </div>
-              <h3 class="font-serif text-3xl font-bold text-gray-900">Thank You, ${escapeHtml(name)}!</h3>
-              <p class="text-sm text-gray-600 max-w-md mx-auto leading-relaxed">
-                Your inquiry for <strong class="text-black">${escapeHtml(product)}</strong> has been received successfully. 
-                Our team will review your specifications and reach out to you directly at <strong class="text-black">${escapeHtml(phone)}</strong> ${email ? `/ <strong class="text-black">${escapeHtml(email)}</strong>` : ''}.
-              </p>
-              
-              <div class="p-4 bg-amber-50 rounded-xl border border-amber-200 text-xs text-amber-900 max-w-md mx-auto text-left space-y-1">
-                <div class="font-bold flex items-center">
-                  <span class="material-symbols-outlined text-base mr-1">mark_email_read</span> Instant Notification Dispatched
-                </div>
-                <p>A notification summary has been sent to our sales desk at <strong>${COMPANY_EMAIL}</strong>.</p>
-              </div>
-
-              <div class="pt-4 flex flex-col sm:flex-row gap-3 justify-center">
-                <button onclick="location.reload()" class="px-6 py-2.5 bg-black text-white text-xs font-bold uppercase tracking-wider rounded-xl hover:bg-amber-600 transition-colors">
-                  Submit Another Inquiry
-                </button>
-                <a href="https://wa.me/${WHATSAPP_NUMBER}?text=Hi%20SM%20Labels,%20I%20just%20submitted%20an%20inquiry%20for%20${encodeURIComponent(product)}." target="_blank" class="px-6 py-2.5 bg-emerald-600 text-white text-xs font-bold uppercase tracking-wider rounded-xl hover:bg-emerald-500 transition-colors flex items-center justify-center">
-                  <span class="material-symbols-outlined text-sm mr-1.5">chat</span> Urgent WhatsApp Contact
-                </a>
-              </div>
-            </div>
-          `;
-        }
-        showToast(`Thank you ${name}! Your inquiry has been submitted.`);
-      } else {
-        const errorMsg = result.error || 'Unable to process your inquiry right now. Please try again or reach out on WhatsApp.';
-        displayFormError(errorMsg);
-        resetSubmitBtn(submitBtn, originalBtnHtml);
+      // Clear previous error
+      if (errorBox) {
+        errorBox.classList.add('hidden');
+        errorBox.innerHTML = '';
       }
 
-    } catch (err) {
-      console.error('Submission error:', err);
-      displayFormError('Network connection issue. Please verify your connection or contact us via WhatsApp.');
-      resetSubmitBtn(submitBtn, originalBtnHtml);
-    }
+      // Read form fields
+      const nameInput = form.querySelector('input[name="name"], #inq-name');
+      const countryCodeSelect = form.querySelector('select[name="countryCode"], #inq-country-code');
+      const phoneInput = form.querySelector('input[name="phone"], #inq-phone');
+      const emailInput = form.querySelector('input[name="email"], #inq-email');
+      const productSelect = form.querySelector('select[name="product"], #inq-product');
+      const companyInput = form.querySelector('input[name="company"], #inq-company');
+      const quantityInput = form.querySelector('input[name="quantity"], #inq-quantity');
+      const messageInput = form.querySelector('textarea[name="message"], #inq-notes');
+      const honeypotInput = form.querySelector('input[name="website"], #inq-website');
+
+      const name = nameInput ? nameInput.value.trim() : '';
+      const countryCode = countryCodeSelect ? countryCodeSelect.value.trim() : '+91';
+      const rawPhone = phoneInput ? phoneInput.value.trim() : '';
+      const phoneDigits = rawPhone.replace(/[^0-9]/g, '');
+      const email = emailInput ? emailInput.value.trim() : '';
+      const product = productSelect ? productSelect.value : 'Custom Garment Labels';
+      const company = companyInput ? companyInput.value.trim() : '';
+      const quantity = quantityInput ? quantityInput.value.trim() : '';
+      const message = messageInput ? messageInput.value.trim() : '';
+      const honeypot = honeypotInput ? honeypotInput.value.trim() : '';
+
+      // --- Honeypot Anti-Spam Check ---
+      if (honeypot.length > 0) {
+        showToast('Enquiry received.');
+        form.reset();
+        return;
+      }
+
+      // --- Validation Rules ---
+      if (!name || name.length < 2) {
+        showFormError(errorBox, 'Please enter your Name (at least 2 characters).');
+        if (nameInput) nameInput.focus();
+        return;
+      }
+
+      if (!phoneDigits) {
+        showFormError(errorBox, 'Please enter your 10-digit Phone / WhatsApp number.');
+        if (phoneInput) phoneInput.focus();
+        return;
+      }
+
+      if (phoneDigits.length !== 10) {
+        showFormError(errorBox, `Phone number must be exactly 10 digits (currently ${phoneDigits.length} digits).`);
+        if (phoneInput) phoneInput.focus();
+        return;
+      }
+
+      if (!email) {
+        showFormError(errorBox, 'Please enter your Email address.');
+        if (emailInput) emailInput.focus();
+        return;
+      }
+
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(email)) {
+        showFormError(errorBox, 'Please enter a valid Email address (e.g. name@brand.com).');
+        if (emailInput) emailInput.focus();
+        return;
+      }
+
+      // Disable button & show spinner
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.classList.add('opacity-75', 'cursor-not-allowed');
+        submitBtn.innerHTML = `
+          <span class="inline-block animate-spin mr-2">⏳</span> Submitting Requirement...
+        `;
+      }
+
+      const payload = {
+        name,
+        countryCode,
+        phone: phoneDigits,
+        email,
+        product,
+        company,
+        quantity,
+        message,
+        website: honeypot
+      };
+
+      try {
+        const response = await fetch(API_ENDPOINT, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+          },
+          body: JSON.stringify(payload)
+        });
+
+        const result = await response.json().catch(() => ({}));
+
+        if (response.ok && result.success) {
+          form.reset();
+
+          if (container) {
+            container.innerHTML = `
+              <div class="text-center py-10 px-6 space-y-4 animate-fadeIn">
+                <div class="w-16 h-16 bg-emerald-100 text-emerald-600 rounded-full mx-auto flex items-center justify-center mb-2 shadow-inner">
+                  <span class="material-symbols-outlined text-3xl">task_alt</span>
+                </div>
+                <h3 class="font-serif text-3xl font-bold text-gray-900">Thank You, ${escapeHtml(name)}!</h3>
+                <p class="text-sm text-gray-600 max-w-md mx-auto leading-relaxed">
+                  Your requirement for <strong class="text-black">${escapeHtml(product)}</strong> has been received. 
+                  Our manufacturing team will review your specifications and contact you at <strong class="text-black">${escapeHtml(countryCode)} ${escapeHtml(phoneDigits)}</strong>.
+                </p>
+                
+                <div class="p-4 bg-amber-50 rounded-xl border border-amber-200 text-xs text-amber-900 max-w-md mx-auto text-left space-y-1">
+                  <div class="font-bold flex items-center">
+                    <span class="material-symbols-outlined text-base mr-1">mark_email_read</span> Inquiry Dispatched
+                  </div>
+                  <p>A notification summary has been routed to our production desk at <strong>${COMPANY_EMAIL}</strong>.</p>
+                </div>
+
+                <div class="pt-4 flex flex-col sm:flex-row gap-3 justify-center">
+                  <button onclick="location.reload()" class="px-6 py-2.5 bg-black text-white text-xs font-bold uppercase tracking-wider rounded-xl hover:bg-amber-600 transition-colors">
+                    Submit Another Requirement
+                  </button>
+                  <a href="https://wa.me/${WHATSAPP_NUMBER}?text=Hi%20SM%20Labels,%20I%20just%20submitted%20an%20inquiry%20for%20${encodeURIComponent(product)}." target="_blank" class="px-6 py-2.5 bg-emerald-600 text-white text-xs font-bold uppercase tracking-wider rounded-xl hover:bg-emerald-500 transition-colors flex items-center justify-center">
+                    <span class="material-symbols-outlined text-sm mr-1.5">chat</span> Urgent WhatsApp Contact
+                  </a>
+                </div>
+              </div>
+            `;
+          }
+          showToast(`Thank you ${name}! Your requirement has been submitted.`);
+        } else {
+          const errorMsg = result.error || 'Unable to submit your requirement. Please verify the information or reach out on WhatsApp (+91-9315458189).';
+          showFormError(errorBox, errorMsg);
+          restoreSubmitBtn(submitBtn, originalBtnHtml);
+        }
+      } catch (err) {
+        console.error('Submission network error:', err);
+        showFormError(errorBox, 'Network issue detected. Please check your connection or contact us directly on WhatsApp (+91-9315458189).');
+        restoreSubmitBtn(submitBtn, originalBtnHtml);
+      }
+    });
   });
 
-  function displayFormError(msg) {
-    if (errorContainer) {
-      errorContainer.innerHTML = `
-        <div class="flex items-center space-x-2">
-          <span class="material-symbols-outlined text-base">error</span>
-          <span>${escapeHtml(msg)}</span>
+  function showFormError(box, message) {
+    if (box) {
+      box.innerHTML = `
+        <div class="flex items-start space-x-2">
+          <span class="material-symbols-outlined text-base text-red-600 mt-0.5">error</span>
+          <span>${escapeHtml(message)}</span>
         </div>
       `;
-      errorContainer.classList.remove('hidden');
+      box.classList.remove('hidden');
     } else {
-      showToast(msg);
+      showToast(message);
     }
   }
 
-  function resetSubmitBtn(btn, html) {
+  function restoreSubmitBtn(btn, html) {
     if (btn) {
       btn.disabled = false;
       btn.classList.remove('opacity-75', 'cursor-not-allowed');
@@ -243,12 +314,21 @@ function initInquiryForm() {
 }
 
 function escapeHtml(str) {
-  if (!str) return '';
-  return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+  if (typeof str !== 'string') {
+    str = (str !== null && str !== undefined) ? String(str) : '';
+  }
+  return str
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
 }
 
+window.escapeHtml = escapeHtml;
+
 /* ==========================================================================
-   5. WEBGL SHADER BACKGROUND
+   6. WEBGL SHADER AMBIENT BACKGROUND
    ========================================================================== */
 function initShaderBackground() {
   const canvas = document.getElementById('shader-canvas');
@@ -342,10 +422,15 @@ function showToast(msg) {
     document.body.appendChild(toast);
   }
 
+  // Safe DOM structure with textContent to prevent DOM XSS
   toast.innerHTML = `
     <span class="material-symbols-outlined text-amber-400">check_circle</span>
-    <span class="text-sm font-medium">${msg}</span>
+    <span class="text-sm font-medium" id="toast-message-text"></span>
   `;
+  const textEl = toast.querySelector('#toast-message-text');
+  if (textEl) {
+    textEl.textContent = msg || '';
+  }
 
   setTimeout(() => {
     toast.classList.remove('translate-y-10', 'opacity-0');

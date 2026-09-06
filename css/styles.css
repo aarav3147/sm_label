@@ -146,3 +146,83 @@ body {
   height: 100%;
   display: block;
 }
+
+/* Client Logo Moving Carousel / Zero-Gap Marquee */
+.client-marquee-container {
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  padding: 16px 0;
+}
+
+.client-marquee-wrapper {
+  display: flex;
+  width: max-content;
+  gap: 20px;
+}
+
+.client-marquee-group {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  gap: 20px;
+  animation: scrollContinuous 30s linear infinite;
+}
+
+.client-marquee-container:hover .client-marquee-group {
+  animation-play-state: paused;
+}
+
+@keyframes scrollContinuous {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(calc(-100% - 20px));
+  }
+}
+
+.client-logo-card {
+  flex-shrink: 0;
+  width: 200px;
+  height: 96px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #ffffff;
+  border: 1px solid rgba(228, 226, 221, 0.95);
+  border-radius: 16px;
+  padding: 14px 20px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.03);
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  user-select: none;
+}
+
+.client-logo-card:hover {
+  transform: translateY(-4px) scale(1.03);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.08);
+  border-color: var(--color-accent-gold);
+}
+
+.client-logo-card img {
+  max-height: 52px;
+  max-width: 150px;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  filter: grayscale(100%) contrast(110%);
+  opacity: 0.85;
+  transition: all 0.35s ease;
+}
+
+.client-logo-card:hover img {
+  filter: grayscale(0%) contrast(100%);
+  opacity: 1;
+}
+
+.marquee-mask {
+  mask-image: linear-gradient(to right, transparent 0%, black 6%, black 94%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 6%, black 94%, transparent 100%);
+}
+
+

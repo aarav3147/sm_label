@@ -5,6 +5,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Request Custom Quote & Samples | SM Labels</title>
   <meta name="description" content="Submit your inquiry for clothing labels, woven labels, satin labels, PU labels, leather patches, and tags to receive custom digital proofs and brand support."/>
+  <link rel="canonical" href="https://smlabels.in/quote"/>
+  <link rel="icon" type="image/jpeg" href="sm-logo.jpeg"/>
+  <link rel="apple-touch-icon" href="sm-logo.jpeg"/>
+
+  <!-- Open Graph / Social Meta -->
+  <meta property="og:type" content="website"/>
+  <meta property="og:title" content="Request Custom Quote & Samples | SM Labels"/>
+  <meta property="og:description" content="Submit your inquiry for custom clothing labels, woven damask, hang tags, and garment trims."/>
+  <meta property="og:url" content="https://smlabels.in/quote"/>
+  <meta property="og:image" content="https://smlabels.in/Label_sewn_on_silk_shirt_202608081854.jpeg"/>
+  <meta name="twitter:card" content="summary_large_image"/>
   
   <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
@@ -45,27 +56,38 @@
   <!-- HEADER -->
   <header class="fixed top-0 left-0 right-0 z-50 glass-nav">
     <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-      <a href="index.html" class="flex items-center space-x-3">
-        <div class="w-10 h-10 bg-brand-dark text-white rounded-lg flex items-center justify-center font-serif font-bold text-xl">SM</div>
+      <a href="index.html" class="flex items-center space-x-3 group">
+        <img src="sm-logo.png" alt="SM Labels" class="h-10 sm:h-12 w-auto object-contain transition-transform group-hover:scale-105"/>
         <div class="flex flex-col">
-          <span class="font-serif text-lg font-bold">SM LABELS</span>
-          <span class="text-[10px] tracking-[0.25em] text-gray-500 uppercase -mt-1">Inquiries</span>
+          <span class="font-serif text-lg sm:text-xl font-bold tracking-wider text-brand-dark">SM LABELS</span>
+          <span class="text-[9px] sm:text-[10px] tracking-[0.22em] text-amber-700 font-semibold uppercase -mt-0.5">LABELS THAT DEFINE BRANDS</span>
         </div>
       </a>
       <nav class="hidden md:flex items-center space-x-8 text-sm font-medium">
         <a href="index.html" class="hover:text-accent-gold">Home</a>
+        <a href="who-we-are.html" class="hover:text-accent-gold">Who We Are</a>
         <a href="products.html" class="hover:text-accent-gold">Products & Catalog</a>
+        <a href="blog.html" class="hover:text-accent-gold">Blog</a>
         <a href="quote.html" class="text-accent-gold font-bold">Inquire Now</a>
       </nav>
-      <!-- Single Brochure Action Button -->
+      <!-- Action Button -->
       <div class="hidden md:flex items-center space-x-3">
-        <a href="SM_Labels_Brochure_2026.html" target="_blank" class="px-4 py-2 text-xs font-semibold tracking-wider uppercase border border-gray-300 hover:border-black rounded-md flex items-center">
-          <span class="material-symbols-outlined text-sm mr-1">file_download</span> Download Brochure
-        </a>
         <button class="whatsapp-trigger px-4 py-2 text-xs font-semibold uppercase btn-whatsapp rounded-md flex items-center" data-product="Get in Touch Page">
           <span class="material-symbols-outlined text-sm mr-1">chat</span> Get in Touch
         </button>
       </div>
+      <button id="mobile-menu-btn" class="md:hidden p-2 text-gray-700 hover:text-black">
+        <span class="material-symbols-outlined text-2xl">menu</span>
+      </button>
+    </div>
+
+    <!-- Mobile Dropdown -->
+    <div id="mobile-menu" class="hidden md:hidden bg-white/95 backdrop-blur-md border-b border-gray-200 px-6 py-4 space-y-3">
+      <a href="index.html" class="block text-sm font-medium py-1">Home</a>
+      <a href="who-we-are.html" class="block text-sm font-medium py-1">Who We Are</a>
+      <a href="products.html" class="block text-sm font-medium py-1">Products & Catalog</a>
+      <a href="blog.html" class="block text-sm font-medium py-1">Blog</a>
+      <a href="quote.html" class="block text-sm font-medium py-1 text-accent-gold font-bold">Inquire Now</a>
     </div>
   </header>
 
@@ -82,13 +104,13 @@
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
         
         <!-- Interactive Customer Form Container -->
-        <div id="inquiry-form-container" class="lg:col-span-7 bg-white p-8 rounded-2xl border border-gray-200 shadow-sm space-y-5">
+        <div id="inquiry-form-container" class="sm-form-container lg:col-span-7 bg-white p-8 rounded-2xl border border-gray-200 shadow-sm space-y-5">
           <h3 class="font-serif text-xl font-bold border-b border-gray-200 pb-3 flex items-center">
             <span class="material-symbols-outlined text-amber-600 mr-2">edit_note</span>
             Request Custom Quote & Samples
           </h3>
 
-          <form id="inquiry-form" class="space-y-4">
+          <form id="inquiry-form" class="sm-contact-form space-y-4">
             <!-- Anti-spam Honeypot Field -->
             <input id="inq-website" name="website" type="text" tabIndex="-1" autocomplete="off" class="hidden" aria-hidden="true" style="display:none !important;" />
 
@@ -99,21 +121,34 @@
               </div>
 
               <div>
-                <label class="block text-xs font-semibold uppercase text-gray-700 mb-1">Company Name</label>
+                <label class="block text-xs font-semibold uppercase text-gray-700 mb-1">Company / Brand Name</label>
                 <input id="inq-company" name="company" type="text" placeholder="Brand / Apparel Company" class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl text-sm focus:ring-2 focus:ring-amber-500 focus:bg-white"/>
               </div>
             </div>
 
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
               <div>
-                <label class="block text-xs font-semibold uppercase text-gray-700 mb-1">Phone / WhatsApp Number *</label>
-                <input id="inq-phone" name="phone" type="tel" required placeholder="+91 93154 58189" class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl text-sm focus:ring-2 focus:ring-amber-500 focus:bg-white"/>
+                <label class="block text-xs font-semibold uppercase text-gray-700 mb-1">Country *</label>
+                <select id="inq-country-code" name="countryCode" class="w-full px-3 py-3 bg-gray-50 border border-gray-200 rounded-xl text-sm font-medium focus:ring-2 focus:ring-amber-500 focus:bg-white">
+                  <option value="+91" selected>🇮🇳 +91 (India)</option>
+                  <option value="+1">🇺🇸 +1 (USA/CA)</option>
+                  <option value="+44">🇬🇧 +44 (UK)</option>
+                  <option value="+971">🇦🇪 +971 (UAE)</option>
+                  <option value="+65">🇸🇬 +65 (SG)</option>
+                  <option value="+880">🇧🇩 +880 (BD)</option>
+                  <option value="+94">🇱🇰 +94 (LK)</option>
+                </select>
               </div>
 
-              <div>
-                <label class="block text-xs font-semibold uppercase text-gray-700 mb-1">Email Address (Optional)</label>
-                <input id="inq-email" name="email" type="email" placeholder="enterprisessm.delhi@gmail.com" class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl text-sm focus:ring-2 focus:ring-amber-500 focus:bg-white"/>
+              <div class="sm:col-span-2">
+                <label class="block text-xs font-semibold uppercase text-gray-700 mb-1">10-Digit Phone / WhatsApp *</label>
+                <input id="inq-phone" name="phone" type="tel" required maxlength="10" placeholder="9315458189" class="phone-input w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl text-sm focus:ring-2 focus:ring-amber-500 focus:bg-white"/>
               </div>
+            </div>
+
+            <div>
+              <label class="block text-xs font-semibold uppercase text-gray-700 mb-1">Email Address *</label>
+              <input id="inq-email" name="email" type="email" required placeholder="name@brand.com" class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl text-sm focus:ring-2 focus:ring-amber-500 focus:bg-white"/>
             </div>
 
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -149,7 +184,7 @@
             </div>
 
             <!-- Error Alert Container -->
-            <div id="inquiry-error-msg" class="hidden p-4 bg-red-50 text-red-700 border border-red-200 rounded-xl text-xs font-medium space-y-1"></div>
+            <div id="inquiry-error-msg" class="sm-form-error hidden p-4 bg-red-50 text-red-700 border border-red-200 rounded-xl text-xs font-medium space-y-1"></div>
 
             <button type="submit" id="inq-submit-btn" class="w-full py-4 btn-gold text-white font-bold text-xs uppercase tracking-widest rounded-xl shadow-xl hover:bg-amber-600 transition-colors">
               Submit Quote Request
@@ -189,13 +224,9 @@
           </div>
 
           <div class="space-y-3 pt-4 border-t border-white/10">
-            <button class="whatsapp-trigger w-full py-3.5 bg-emerald-600 text-white font-bold text-xs uppercase tracking-widest rounded-xl hover:bg-emerald-500 transition-colors shadow-lg flex items-center justify-center" data-product="Atelier Inquiry Page">
+            <button class="whatsapp-trigger w-full py-3.5 bg-emerald-600 text-white font-bold text-xs uppercase tracking-widest rounded-xl hover:bg-emerald-500 transition-colors shadow-lg flex items-center justify-center" data-product="Atelier Special Offer Package">
               <span class="material-symbols-outlined text-base mr-2">chat</span> Or Chat Directly on WhatsApp
             </button>
-
-            <a href="SM_Labels_Brochure_2026.html" target="_blank" class="block w-full text-center py-3 bg-white/10 text-white font-semibold text-xs uppercase tracking-widest rounded-xl hover:bg-white/20 transition-colors flex items-center justify-center">
-              <span class="material-symbols-outlined text-sm mr-1.5">file_download</span> Download Product Brochure
-            </a>
           </div>
         </div>
 
@@ -203,35 +234,35 @@
     </div>
   </main>
 
-  <!-- ==================== DETAILED UNIFIED FOOTER ==================== -->
+  <!-- ==================== FOOTER ==================== -->
   <footer class="bg-brand-dark text-white pt-16 pb-12 border-t border-white/10">
     <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
       
       <!-- Column 1: Brand & Slogan -->
       <div class="space-y-4">
-        <div class="flex items-center space-x-2 font-serif text-xl font-bold">
-          <div class="w-8 h-8 bg-amber-400 text-black rounded flex items-center justify-center font-bold text-sm">SM</div>
-          <span>SM LABELS</span>
+        <div class="flex items-center space-x-3 font-serif text-xl font-bold">
+          <img src="sm-logo.png" alt="SM Labels" class="h-10 w-auto object-contain bg-white rounded-lg p-1"/>
+          <div class="flex flex-col">
+            <span class="text-white">SM LABELS</span>
+            <span class="text-[9px] tracking-[0.22em] text-amber-400 font-semibold uppercase -mt-0.5">LABELS THAT DEFINE BRANDS</span>
+          </div>
         </div>
         <p class="text-xs text-gray-400 leading-relaxed">
           Give every garment a distinct identity with labels designed around your brand. Crafted with precision for fashion houses & apparel manufacturers.
         </p>
-        <div class="pt-2">
-          <a href="SM_Labels_Brochure_2026.html" target="_blank" class="inline-flex items-center px-4 py-2 bg-white/10 hover:bg-white/20 text-white text-xs font-semibold rounded-lg transition-colors border border-white/15">
-            <span class="material-symbols-outlined text-sm mr-1.5">download</span> Download Brochure 2026
-          </a>
-        </div>
       </div>
 
       <!-- Column 2: Clothing Labels -->
       <div>
         <h5 class="text-xs font-bold uppercase tracking-widest text-amber-400 mb-4">Clothing Labels</h5>
         <ul class="space-y-2 text-xs text-gray-300">
-          <li><a href="products.html" class="hover:text-white">Clothing Labels</a></li>
-          <li><a href="products.html" class="hover:text-white">Woven Labels</a></li>
-          <li><a href="products.html" class="hover:text-white">Satin Labels</a></li>
-          <li><a href="products.html" class="hover:text-white">PU Labels</a></li>
-          <li><a href="products.html" class="hover:text-white">Leather Patches</a></li>
+          <li><a href="clothing-labels.html" class="hover:text-white">Clothing Labels Hub</a></li>
+          <li><a href="woven-labels.html" class="hover:text-white">Woven Labels</a></li>
+          <li><a href="satin-labels.html" class="hover:text-white">Satin Labels</a></li>
+          <li><a href="printed-labels.html" class="hover:text-white">Printed Labels</a></li>
+          <li><a href="pu-labels.html" class="hover:text-white">PU Labels</a></li>
+          <li><a href="leather-labels.html" class="hover:text-white">Leather Labels</a></li>
+          <li><a href="custom-labels.html" class="hover:text-white">Custom Labels</a></li>
         </ul>
       </div>
 
@@ -239,35 +270,48 @@
       <div>
         <h5 class="text-xs font-bold uppercase tracking-widest text-amber-400 mb-4">Tags Collection</h5>
         <ul class="space-y-2 text-xs text-gray-300">
-          <li><a href="products.html" class="hover:text-white">Cardboard Tags</a></li>
-          <li><a href="products.html" class="hover:text-white">Hang Tags</a></li>
-          <li><a href="products.html" class="hover:text-white">Art Card Tags</a></li>
-          <li><a href="products.html" class="hover:text-white">Paper Tags</a></li>
-          <li><a href="products.html" class="hover:text-white">UV Tags</a></li>
+          <li><a href="hang-tags.html" class="hover:text-white">Hang Tags</a></li>
+          <li><a href="paper-tags.html" class="hover:text-white">Paper Tags</a></li>
+          <li><a href="cardboard-tags.html" class="hover:text-white">Cardboard Tags</a></li>
+          <li><a href="locations/clothing-label-manufacturer-ghaziabad.html" class="hover:text-white">Ghaziabad Factory</a></li>
+          <li><a href="locations/clothing-label-manufacturer-ahmedabad.html" class="hover:text-white">Ahmedabad Factory</a></li>
         </ul>
       </div>
 
       <!-- Column 4: Contact & Geo Location -->
       <div class="space-y-3">
-        <h5 class="text-xs font-bold uppercase tracking-widest text-amber-400 mb-4">Contact & Geo Location</h5>
+        <h5 class="text-xs font-bold uppercase tracking-widest text-amber-400 mb-4">Contact & Locations</h5>
         
-        <p class="text-xs text-gray-300 leading-relaxed flex items-start">
+        <div class="text-xs text-gray-300 leading-relaxed flex items-start">
           <span class="material-symbols-outlined text-amber-400 text-base mr-2 mt-0.5">location_on</span>
-          <span>
-            <strong>Address:</strong><br/>
+          <div>
+            <strong class="text-white">Unit 1 (NCR / UP):</strong><br/>
             A- 128 Parsvnath paradise, Mohan nagar, Ghaziabad, UP, India
-          </span>
-        </p>
+            <div class="mt-1">
+              <a href="https://maps.google.com/?q=A-+128+Parsvnath+paradise,+Mohan+nagar,+Ghaziabad,+UP,+India" target="_blank" class="inline-flex items-center text-[11px] text-amber-300 hover:underline">
+                <span class="material-symbols-outlined text-xs mr-1">map</span> View Ghaziabad Map
+              </a>
+            </div>
+          </div>
+        </div>
 
-        <a href="https://maps.google.com/?q=A-+128+Parsvnath+paradise,+Mohan+nagar,+Ghaziabad,+UP,+India" target="_blank" class="inline-flex items-center text-xs text-amber-300 hover:underline">
-          <span class="material-symbols-outlined text-sm mr-1">map</span> View Location on Google Maps
-        </a>
+        <div class="text-xs text-gray-300 leading-relaxed flex items-start pt-2 border-t border-white/10">
+          <span class="material-symbols-outlined text-amber-400 text-base mr-2 mt-0.5">factory</span>
+          <div>
+            <strong class="text-white">Unit 2 (Gujarat Unit):</strong><br/>
+            PLOT NO. 19/20-A, KRISHNA GOPAL ESTATE, OPP.NARODA FRUIT MARKET, NARODA ROAD, AHMEDABAD- 380025
+            <div class="mt-1">
+              <a href="https://maps.google.com/?q=PLOT+NO.+19/20-A,+KRISHNA+GOPAL+ESTATE,+OPP.NARODA+FRUIT+MARKET,+NARODA+ROAD,+AHMEDABAD-+380025" target="_blank" class="inline-flex items-center text-[11px] text-amber-300 hover:underline">
+                <span class="material-symbols-outlined text-xs mr-1">map</span> View Ahmedabad Map
+              </a>
+            </div>
+          </div>
+        </div>
 
         <p class="text-xs text-gray-300 flex items-center pt-2">
           <span class="material-symbols-outlined text-amber-400 text-base mr-2">mail</span>
           <a href="mailto:enterprisessm.delhi@gmail.com" class="hover:underline text-gray-200">enterprisessm.delhi@gmail.com</a>
         </p>
-
         <p class="text-xs text-gray-300 flex items-center">
           <span class="material-symbols-outlined text-emerald-400 text-base mr-2">phone_in_talk</span>
           <a href="https://wa.me/919315458189" target="_blank" class="hover:underline text-gray-200">+91-9315458189 (WhatsApp)</a>
@@ -280,10 +324,11 @@
     <div class="max-w-7xl mx-auto px-6 pt-8 mt-8 border-t border-white/10 flex flex-col sm:flex-row justify-between text-xs text-gray-500">
       <span>© 2026 SM Labels Inc. All rights reserved.</span>
       <div class="space-x-4 mt-2 sm:mt-0">
+        <a href="index.html" class="hover:text-gray-300">Home</a>
+        <a href="who-we-are.html" class="hover:text-gray-300">Who We Are</a>
         <a href="products.html" class="hover:text-gray-300">Products</a>
-        <a href="index.html#inquiry" class="hover:text-gray-300">Inquiry Form</a>
-        <a href="SM_Labels_Brochure_2026.html" target="_blank" class="hover:text-gray-300">Brochure</a>
-        <a href="https://maps.google.com/?q=A-+128+Parsvnath+paradise,+Mohan+nagar,+Ghaziabad,+UP,+India" target="_blank" class="hover:text-gray-300">Google Maps</a>
+        <a href="blog.html" class="hover:text-gray-300">Blog</a>
+        <a href="quote.html" class="hover:text-gray-300">Inquiry Form</a>
       </div>
     </div>
   </footer>
