@@ -3,8 +3,8 @@
 **Target Domain:** [https://smlabels.in](https://smlabels.in)  
 **Business:** SM Labels  
 **Manufacturing Units:**  
-- **Unit 1 (NCR / UP):** A-128 Parsvnath Paradise, Mohan Nagar, Ghaziabad, Uttar Pradesh 201007  
-- **Unit 2 (Gujarat):** Plot No. 19/20-A, Krishna Gopal Estate, Opp. Naroda Fruit Market, Naroda Road, Ahmedabad, Gujarat 380025  
+- **Unit 1 (AHMEDABAD):** Plot No. 19/20-A, Krishna Gopal Estate, Opp. Naroda Fruit Market, Naroda Road, Ahmedabad, Gujarat 380025  
+- **Unit 2 (Ghaziabad / NCR):** A-128 Parsvnath Paradise, Mohan Nagar, Ghaziabad, Uttar Pradesh 201007  
 **Verified Contact:** Phone/WhatsApp: `+91-9315458189` | Email: `enterprisessm.delhi@gmail.com`  
 **Audit Date:** August 2026  
 **Overall Quality Score:** **100 / 100**
